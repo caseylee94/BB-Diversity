@@ -1,3 +1,31 @@
+    // create the function for the change event
+    function optionChanged(id) {
+        getPlots(id);
+        getDemoInfo(id);
+    }
+    
+    // create the function for the initial data rendering
+    function init() {
+        // select dropdown menu 
+        var dropdown = d3.select("#selDataset");
+    
+        // read the data 
+        d3.json("samples.json").then((data)=> {
+            console.log(data)
+    
+            // get the id data to the dropdwown menu
+            data.names.forEach(function(name) {
+                dropdown.append("option").text(name).property("value");
+            });
+    
+            // call the functions to display the data and the plots to the page
+            getPlots(data.names[0]);
+            getDemoInfo(data.names[0]);
+        });
+    }
+    
+
+
 function getPlots(id) {
     //Read samples.json
         d3.json("samples.json").then (sampledata =>{
@@ -60,6 +88,7 @@ function getPlots(id) {
             // set the layout for the bubble plot
             var layout_2 = {
                 xaxis:{title: "OTU ID"},
+                title: "Bacteria Cultures per Sample",
                 height: 600,
                 width: 1000
             };
@@ -67,7 +96,7 @@ function getPlots(id) {
             // creating data variable 
             var data1 = [trace1];
 
-// Creating the gauge chart
+            // Creating the gauge chart
             var data = [
                 {
                   domain: { x: [0, 1], y: [0, 1] },
@@ -101,6 +130,9 @@ function getPlots(id) {
         
         });
     }  
+
+
+
     // create the function to get the necessary data
     function getDemoInfo(id) {
     // read the json file to get data
@@ -124,30 +156,30 @@ function getPlots(id) {
             });
         });
     }
-    // create the function for the change event
-    function optionChanged(id) {
-        getPlots(id);
-        getDemoInfo(id);
-    }
+    // // create the function for the change event
+    // function optionChanged(id) {
+    //     getPlots(id);
+    //     getDemoInfo(id);
+    // }
     
-    // create the function for the initial data rendering
-    function init() {
-        // select dropdown menu 
-        var dropdown = d3.select("#selDataset");
+    // // create the function for the initial data rendering
+    // function init() {
+    //     // select dropdown menu 
+    //     var dropdown = d3.select("#selDataset");
     
-        // read the data 
-        d3.json("samples.json").then((data)=> {
-            console.log(data)
+    //     // read the data 
+    //     d3.json("samples.json").then((data)=> {
+    //         console.log(data)
     
-            // get the id data to the dropdwown menu
-            data.names.forEach(function(name) {
-                dropdown.append("option").text(name).property("value");
-            });
+    //         // get the id data to the dropdwown menu
+    //         data.names.forEach(function(name) {
+    //             dropdown.append("option").text(name).property("value");
+    //         });
     
-            // call the functions to display the data and the plots to the page
-            getPlots(data.names[0]);
-            getDemoInfo(data.names[0]);
-        });
-    }
+    //         // call the functions to display the data and the plots to the page
+    //         getPlots(data.names[0]);
+    //         getDemoInfo(data.names[0]);
+    //     });
+    // }
     
     init();
