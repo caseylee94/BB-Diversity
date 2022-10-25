@@ -11,3 +11,7 @@ Tasks:
 * Build a bubble chart displaying the number of bacterial cultures per samples
 * Build a gauge chart displaying the frequency of washes of the belly button per week
 * Add three additional developments to the website
+
+## Resources
+
+**HTML, Javascript, Visual Studio Code
