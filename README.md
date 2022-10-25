@@ -14,4 +14,4 @@ Tasks:
 
 ## Resources
 
-**HTML, Javascript, Visual Studio Code
+HTML, Javascript, Visual Studio Code
